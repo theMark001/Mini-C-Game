@@ -7,7 +7,7 @@ MLX_DIR = mlx
 SRC_DIR = src
 
 # Source files
-SRC = $(SRC_DIR)/main.c
+SRC = $(SRC_DIR)/mini_game.c
 OBJ = $(SRC:.c=.o)
 
 # Target executable name
