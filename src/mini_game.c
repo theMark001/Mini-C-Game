@@ -26,6 +26,9 @@ int main(void) {
 
   // Setting up Movements
   mlx_hook(vars.graphics.win, 2, 1L<<0, move_player, &vars);
+  
+  // Set the close event hook to listen for the X button
+  mlx_hook(vars.graphics.win, 17, 0, close_window, &vars);
 
   mlx_loop(vars.graphics.mlx);
   return 0;

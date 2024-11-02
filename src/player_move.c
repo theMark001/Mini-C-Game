@@ -25,6 +25,12 @@ char next_px(int next_x, int next_y, const char *map_path, int tile_size)
   return '\0';
 }
 
+int close_window(t_vars *vars) {
+  mlx_destroy_window(vars->graphics.mlx, vars->graphics.win);
+  exit(0);
+  return (0);
+}
+
 int move_player(int key, t_vars *vars)
 {
   map_info info = get_map_info("maps/map.ber");
@@ -39,7 +45,10 @@ int move_player(int key, t_vars *vars)
     next_y += vars->state.tile_size;
   } else if (key == KEY_D) {
     next_x += vars->state.tile_size;
-  } else {
+  } else if (key == KEY_ESC) {
+    close_window(vars);
+  }
+  else {
     return 0;
   }
 
@@ -63,7 +72,7 @@ int move_player(int key, t_vars *vars)
   }
   else if (tile == 'E') {
     if (info.all_collectible == vars->state.collectible_count) {
-      mlx_destroy_window(vars->graphics.mlx, vars->graphics.win);
+      close_window(vars);
     }
   }
 

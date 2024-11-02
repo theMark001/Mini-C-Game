@@ -13,7 +13,7 @@
 #define KEY_A 0
 #define KEY_S 1
 #define KEY_D 2
-
+#define KEY_ESC 53
 #define MAX_COLLECTIBLES 100
 
 typedef struct {
@@ -52,5 +52,6 @@ typedef struct s_vars {
 map_info get_map_info(const char *filename);
 void read_and_display_map(t_vars *vars, const char *map_path);
 int move_player(int key, t_vars *vars);
+int close_window(t_vars *vars);
 
 #endif
