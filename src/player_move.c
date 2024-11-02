@@ -2,21 +2,12 @@
 
 char next_px(int next_x, int next_y, const char *map_path, int tile_size)
 {
-  // Convert pixel coordinates to tile indices
   int tile_x = next_x / tile_size;
   int tile_y = next_y / tile_size;
-  
-  // Open the map file
   int fd = open(map_path, O_RDONLY);
-  if (fd < 0) {
-    perror("Error opening map file");
-    return '\0'; // Return null character to indicate an error
-  }
-
   char buffer;
   int current_x = 0, current_y = 0;
 
-  // Read through the file to find the target tile
   while (read(fd, &buffer, 1) == 1) {
     if (buffer == '\n') {
       current_y++;
@@ -24,14 +15,14 @@ char next_px(int next_x, int next_y, const char *map_path, int tile_size)
     } else {
       if (current_x == tile_x && current_y == tile_y) {
         close(fd);
-        return buffer; // Return the character found at this position
+        return buffer;
       }
       current_x++;
     }
   }
 
   close(fd);
-  return '\0'; // Return null character if position not found in the file
+  return '\0';
 }
 
 int move_player(int key, t_vars *vars)
@@ -39,7 +30,6 @@ int move_player(int key, t_vars *vars)
   int next_x = vars->state.current_x;
   int next_y = vars->state.current_y;
 
-  // Determine the next position based on key input
   if (key == KEY_W) {
     next_y -= vars->state.tile_size;
   } else if (key == KEY_A) {
@@ -52,13 +42,11 @@ int move_player(int key, t_vars *vars)
     return 0;
   }
 
-  // Check the next position's tile type
   char tile = next_px(next_x, next_y, "maps/map.ber", vars->state.tile_size);
-
   if (tile == '1') {
     return 0;
-  } else if (tile == 'C') {
-    // Check if collectible is already saved
+  } 
+  else if (tile == 'C') {
     int already_saved = 0;
     for (int i = 0; i < vars->state.collectible_count; i++) {
       if (vars->state.collectible_x[i] == next_x && vars->state.collectible_y[i] == next_y) {
@@ -66,21 +54,16 @@ int move_player(int key, t_vars *vars)
         break;
       }
     }
-
-    // If not saved, store the collectible position
     if (!already_saved && vars->state.collectible_count < MAX_COLLECTIBLES) {
       vars->state.collectible_x[vars->state.collectible_count] = next_x;
       vars->state.collectible_y[vars->state.collectible_count] = next_y;
       vars->state.collectible_count++;
-      printf("Collectible found at (%d, %d)\n", next_x, next_y);
     }
-  } else if (tile == 'D') {
-    printf("You encountered a door!\n");
-  } else if (tile == 'E') {
-    printf("You reached the exit!\n");
+  }
+  else if (tile == 'E') {
+
   }
 
-  // If it's not a wall, update the player's position
   vars->state.current_x = next_x;
   vars->state.current_y = next_y;
 
