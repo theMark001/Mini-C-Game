@@ -40,5 +40,6 @@ typedef struct s_vars {
 
 map_size calc_map_size(const char *filename);
 void read_and_display_map(t_vars *vars, const char *map_path);
+int move_player(int key, t_vars *vars);
 
 #endif
