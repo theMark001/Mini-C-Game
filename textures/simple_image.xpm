@@ -1,0 +1,41 @@
+/* XPM */
+static char *simple_image[] = {
+/* width height num_colors chars_per_pixel */
+"32 32 3 1",
+/* colors */
+"  c #FFFFFF",   /* White */
+". c #FF0000",   /* Red */
+"X c #000000",   /* Black */
+/* pixels */
+"................................",
+".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+".X                            X.",
+".X .......................... X.",
+".X .XXXXXXXXXXXXXXXXXXXXXXXX. X.",
+".X .X                        X. X.",
+".X .X ...................... X. X.",
+".X .X .XXXXXXXXXXXXXXXXXXXX X. X.",
+".X .X .X                  X. X. X.",
+".X .X .X ................ X. X. X.",
+".X .X .X .XXXXXXXXXXXXXX X. X. X.",
+".X .X .X .X            X. X. X. X.",
+".X .X .X .X .......... X. X. X. X.",
+".X .X .X .X .XXXXXXXX X. X. X. X.",
+".X .X .X .X .X      X. X. X. X. X.",
+".X .X .X .X .X .... X. X. X. X. X.",
+".X .X .X .X .X .XX X. X. X. X. X.",
+".X .X .X .X .X .X X. X. X. X. X.",
+".X .X .X .X .X .. X. X. X. X. X.",
+".X .X .X .X .X .X X. X. X. X. X.",
+".X .X .X .X .X X. X. X. X. X. X.",
+".X .X .X .X X. X. X. X. X. X. X.",
+".X .X .X X. X. X. X. X. X. X. X.",
+".X .X X. X. X. X. X. X. X. X. X.",
+".X X. X. X. X. X. X. X. X. X. X.",
+".X. X. X. X. X. X. X. X. X. X. X.",
+".X X. X. X. X. X. X. X. X. X. X.",
+".X. X. X. X. X. X. X. X. X. X. X.",
+".X X. X. X. X. X. X. X. X. X. X.",
+".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+"................................"
+};
