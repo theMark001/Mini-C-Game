@@ -26,8 +26,9 @@ typedef struct s_vars {
   void *bg_img;
   void *player_img;
   int tile_size;
-	int current_x;
+  int current_x;
   int current_y;
+  int initial_position_set; // Flag to check if the initial position is set
 } t_vars;
 
 my_map_size map_size(const char *filename);
