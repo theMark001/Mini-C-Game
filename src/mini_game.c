@@ -1,6 +1,5 @@
 #include "../mini_game.h"
 
-
 int move_player(int key, t_vars *vars) {
   // Move player based on key press
   if (key == KEY_W) {
@@ -37,8 +36,9 @@ int main(void) {
   vars.mlx = mlx_init();
 
   // Create a window
-  int win_width = 500;
-  int win_height = 500;
+  my_map_size size = map_size("maps/map.ber");
+  int win_width = size.width;
+  int win_height = size.height;
   vars.win = mlx_new_window(vars.mlx, win_width, win_height, "Mini Game");
 
   // Load and display background
