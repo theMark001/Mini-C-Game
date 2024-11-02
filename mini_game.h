@@ -31,6 +31,9 @@ typedef struct {
   void *win;
   void *bg_img;
   void *player_img;
+	void *exit_img;
+	void *item_img;
+	void *wall_img;
 } t_graphics;
 
 typedef struct s_vars {

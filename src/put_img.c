@@ -11,6 +11,18 @@ void read_and_display_map(t_vars *vars, const char *map_path) {
       mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.bg_img, x * vars->state.tile_size, y * vars->state.tile_size);
       x++;
     } 
+		else if (buffer == '1') {
+      mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.wall_img, x * vars->state.tile_size, y * vars->state.tile_size);
+      x++;
+    } 
+		else if (buffer == 'C') {
+      mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.item_img, x * vars->state.tile_size, y * vars->state.tile_size);
+      x++;
+    } 
+		else if (buffer == 'E') {
+      mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.exit_img, x * vars->state.tile_size, y * vars->state.tile_size);
+      x++;
+    } 
 		else if (buffer == 'P') {
       if (!vars->state.initial_position_set) {
         vars->state.current_x = x * vars->state.tile_size;

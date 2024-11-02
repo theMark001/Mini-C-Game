@@ -17,6 +17,9 @@ int main(void) {
   int img_width, img_height;
   vars.graphics.bg_img = mlx_xpm_file_to_image(vars.graphics.mlx, "textures/bg.xpm", &img_width, &img_height);
   vars.graphics.player_img = mlx_xpm_file_to_image(vars.graphics.mlx, "textures/player.xpm", &img_width, &img_height);
+  vars.graphics.exit_img = mlx_xpm_file_to_image(vars.graphics.mlx, "textures/exit.xpm", &img_width, &img_height);
+  vars.graphics.item_img = mlx_xpm_file_to_image(vars.graphics.mlx, "textures/item.xpm", &img_width, &img_height);
+  vars.graphics.wall_img = mlx_xpm_file_to_image(vars.graphics.mlx, "textures/wall.xpm", &img_width, &img_height);
 
   // Display Imgs
   read_and_display_map(&vars, "maps/map.ber");
