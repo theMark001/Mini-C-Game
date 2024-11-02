@@ -7,7 +7,7 @@ int main(void) {
   vars.state.initial_position_set = 0;
 
   // Setting up Window
-  map_size size = calc_map_size("maps/map.ber");
+  map_info size = get_map_info("maps/map.ber");
   vars.state.tile_size = 50;
   int win_width = size.width * vars.state.tile_size;
   int win_height = size.height * vars.state.tile_size;

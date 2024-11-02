@@ -27,6 +27,7 @@ char next_px(int next_x, int next_y, const char *map_path, int tile_size)
 
 int move_player(int key, t_vars *vars)
 {
+  map_info info = get_map_info("maps/map.ber");
   int next_x = vars->state.current_x;
   int next_y = vars->state.current_y;
 
@@ -61,7 +62,9 @@ int move_player(int key, t_vars *vars)
     }
   }
   else if (tile == 'E') {
-
+    if (info.all_collectible == vars->state.collectible_count) {
+      mlx_destroy_window(vars->graphics.mlx, vars->graphics.win);
+    }
   }
 
   vars->state.current_x = next_x;
@@ -74,10 +77,12 @@ int move_player(int key, t_vars *vars)
   // Display all collectibles
   for (int i = 0; i < vars->state.collectible_count; i++) {
     mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.bg_img, vars->state.collectible_x[i], vars->state.collectible_y[i]);
-    printf("Displayed at %d, %d\n", vars->state.collectible_x[i], vars->state.collectible_y[i]);
   }
 
-  // Display player at current position
+  // display bg at the player start posithion
+  mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.bg_img, vars->state.start_pos_x, vars->state.start_pos_y);
+
+  // Display player at current position and 
   mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.player_img, vars->state.current_x, vars->state.current_y);
 
   return 0;

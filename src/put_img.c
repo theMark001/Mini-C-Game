@@ -1,5 +1,10 @@
 #include "../mini_game.h"
 
+void init_start_pos(t_vars *vars) {
+  vars->state.start_pos_x = vars->state.current_x;
+  vars->state.start_pos_y = vars->state.current_y;
+}
+
 void read_and_display_map(t_vars *vars, const char *map_path) {
   int fd = open(map_path, O_RDONLY);
   char buffer;
@@ -28,6 +33,7 @@ void read_and_display_map(t_vars *vars, const char *map_path) {
         vars->state.current_x = x * vars->state.tile_size;
         vars->state.current_y = y * vars->state.tile_size;
         vars->state.initial_position_set = 1;
+        init_start_pos(vars);
       }
       mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.player_img, vars->state.current_x, vars->state.current_y);
       x++;

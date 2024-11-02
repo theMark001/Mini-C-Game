@@ -1,8 +1,14 @@
 #include "../mini_game.h"
 
-map_size calc_map_size(const char *filename) {
+map_info get_map_info(const char *filename) {
   int fd = open(filename, O_RDONLY);
-  map_size size = {0, 0};
+  if (fd < 0) {
+    perror("Error opening file");
+    map_info error_size = {0, 0, 0};
+    return error_size; 
+  }
+
+  map_info size = {0, 0, 0};
   ssize_t bytes_read;
   char buffer[1024];
   int is_first_line = 1;
@@ -12,11 +18,17 @@ map_size calc_map_size(const char *filename) {
       if (buffer[i] == '\n') {
         size.height++;
         is_first_line = 0;
-      } else if (is_first_line) {
-        size.width++;
+      } else {
+        if (is_first_line) {
+          size.width++;
+        }
+        if (buffer[i] == 'C') {
+          size.all_collectible++;
+        }
       }
     }
   }
+  
   size.height += 1;
   close(fd);
   return size;
