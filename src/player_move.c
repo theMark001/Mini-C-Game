@@ -52,11 +52,22 @@ int move_player(int key, t_vars *vars)
     return 0;
   }
 
-  // Check if the next position is a wall
-  if (next_px(next_x, next_y, "maps/map.ber", vars->state.tile_size) != '1') {
-    vars->state.current_x = next_x;
-    vars->state.current_y = next_y;
+  // Check the next position's tile type
+  char tile = next_px(next_x, next_y, "maps/map.ber", vars->state.tile_size);
+
+  if (tile == '1') {
+    return 0;
+  } else if (tile == 'C') {
+    printf("You encountered a collectible!\n");
+  } else if (tile == 'D') {
+    printf("You encountered a door!\n");
+  } else if (tile == 'E') {
+    printf("You reached the exit!\n");
   }
+
+  // If it's not a wall, update the player's position
+  vars->state.current_x = next_x;
+  vars->state.current_y = next_y;
 
   // Update the display
   mlx_clear_window(vars->graphics.mlx, vars->graphics.win);
