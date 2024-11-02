@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_move.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
+/*   Updated: 2024/11/02 23:33:42 by marksylaiev      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini_game.h"
 
 char	next_px(int next_x, int next_y, const char *map_path, int tile_size)
@@ -6,12 +18,14 @@ char	next_px(int next_x, int next_y, const char *map_path, int tile_size)
 	int		tile_y;
 	int		fd;
 	char	buffer;
-	int		current_x = 0, current_y;
+	int		current_x;
+  int current_y;
 
+	current_x = 0;
+  current_y = 0;
 	tile_x = next_x / tile_size;
 	tile_y = next_y / tile_size;
 	fd = open(map_path, O_RDONLY);
-	current_x = 0, current_y = 0;
 	while (read(fd, &buffer, 1) == 1)
 	{
 		if (buffer == '\n')
@@ -52,34 +66,20 @@ int	move_player(int key, t_vars *vars)
 	next_x = vars->state.current_x;
 	next_y = vars->state.current_y;
 	if (key == KEY_W)
-	{
 		next_y -= vars->state.tile_size;
-	}
 	else if (key == KEY_A)
-	{
 		next_x -= vars->state.tile_size;
-	}
 	else if (key == KEY_S)
-	{
 		next_y += vars->state.tile_size;
-	}
 	else if (key == KEY_D)
-	{
 		next_x += vars->state.tile_size;
-	}
 	else if (key == KEY_ESC)
-	{
 		close_window(vars);
-	}
 	else
-	{
 		return (0);
-	}
 	tile = next_px(next_x, next_y, "maps/map.ber", vars->state.tile_size);
 	if (tile == '1')
-	{
 		return (0);
-	}
 	else if (tile == 'C')
 	{
 		already_saved = 0;
@@ -102,9 +102,7 @@ int	move_player(int key, t_vars *vars)
 	else if (tile == 'E')
 	{
 		if (info.all_collectible == vars->state.collectible_count)
-		{
 			close_window(vars);
-		}
 	}
 	vars->state.current_x = next_x;
 	vars->state.current_y = next_y;
