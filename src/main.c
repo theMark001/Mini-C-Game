@@ -1,38 +1,24 @@
 #include <mlx.h>
-#include <stdio.h>
 
 int main(void)
 {
+  // Setting up mlx
   void *mlx;
+  mlx = mlx_init();
+
+  // Setting up window
   void *win;
+  win = mlx_new_window(mlx, 500, 500, "Image Display");
+
+
   void *img;
-  char *relative_path = "./test.xpm";
+  char *relative_path = "textures/photo.xpm";
   int img_width;
   int img_height;
 
-  mlx = mlx_init();
-  if (!mlx)
-  {
-    fprintf(stderr, "Error initializing MiniLibX\n");
-    return (1);
-  }
-
-  win = mlx_new_window(mlx, 500, 500, "Image Display");
-  if (!win)
-  {
-    fprintf(stderr, "Error creating window\n");
-    return (1);
-  }
-
-  printf("Loading XPM file from path: %s\n", relative_path);
   img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-  if (!img)
-  {
-    fprintf(stderr, "Error loading XPM file\n");
-    return (1);
-  }
-
   mlx_put_image_to_window(mlx, win, img, 0, 0);
+
+  // Loop for project
   mlx_loop(mlx);
-  return (0);
 }
