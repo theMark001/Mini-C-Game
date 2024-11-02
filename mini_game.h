@@ -14,6 +14,8 @@
 #define KEY_S 1
 #define KEY_D 2
 
+#define MAX_COLLECTIBLES 100
+
 typedef struct {
   int width;
   int height;
@@ -24,6 +26,9 @@ typedef struct {
   int current_x;
   int current_y;
   int initial_position_set;
+  int collectible_count;
+  int collectible_x[MAX_COLLECTIBLES];
+  int collectible_y[MAX_COLLECTIBLES];
 } t_game_state;
 
 typedef struct {

@@ -58,7 +58,22 @@ int move_player(int key, t_vars *vars)
   if (tile == '1') {
     return 0;
   } else if (tile == 'C') {
-    printf("You encountered a collectible!\n");
+    // Check if collectible is already saved
+    int already_saved = 0;
+    for (int i = 0; i < vars->state.collectible_count; i++) {
+      if (vars->state.collectible_x[i] == next_x && vars->state.collectible_y[i] == next_y) {
+        already_saved = 1;
+        break;
+      }
+    }
+
+    // If not saved, store the collectible position
+    if (!already_saved && vars->state.collectible_count < MAX_COLLECTIBLES) {
+      vars->state.collectible_x[vars->state.collectible_count] = next_x;
+      vars->state.collectible_y[vars->state.collectible_count] = next_y;
+      vars->state.collectible_count++;
+      printf("Collectible found at (%d, %d)\n", next_x, next_y);
+    }
   } else if (tile == 'D') {
     printf("You encountered a door!\n");
   } else if (tile == 'E') {
@@ -72,6 +87,14 @@ int move_player(int key, t_vars *vars)
   // Update the display
   mlx_clear_window(vars->graphics.mlx, vars->graphics.win);
   read_and_display_map(vars, "maps/map.ber");
+
+  // Display all collectibles
+  for (int i = 0; i < vars->state.collectible_count; i++) {
+    mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.bg_img, vars->state.collectible_x[i], vars->state.collectible_y[i]);
+    printf("Displayed at %d, %d\n", vars->state.collectible_x[i], vars->state.collectible_y[i]);
+  }
+
+  // Display player at current position
   mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win, vars->graphics.player_img, vars->state.current_x, vars->state.current_y);
 
   return 0;
