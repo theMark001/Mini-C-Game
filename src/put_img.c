@@ -1,4 +1,4 @@
-#include "../mini_game.h"
+#include "mini_game.h"
 
 void init_start_pos(t_vars *vars) {
   vars->state.start_pos_x = vars->state.current_x;
