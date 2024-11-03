@@ -34,7 +34,7 @@ typedef struct useless_1
 	int				height;
 	int				all_collectible;
 	int				all_exits;
-	int 			all_players;
+	int				all_players;
 }					t_map_info;
 
 typedef struct useless_2
@@ -66,15 +66,14 @@ typedef struct useless_4
 {
 	t_graphics		graphics;
 	t_game_state	state;
-	t_map_info    map_info;
-	char							*path;
+	t_map_info		map_info;
+	char			*path;
 }					t_vars;
 
-void get_map_info(t_vars *vars);
-int map_check(t_vars *vars);
+void				get_map_info(t_vars *vars);
+int					map_check(t_vars *vars);
 void				read_and_display_map(t_vars *vars);
-int	move_player(int key, t_vars *vars);
+int					move_player(int key, t_vars *vars);
 int					close_window(t_vars *vars);
-
 
 #endif
