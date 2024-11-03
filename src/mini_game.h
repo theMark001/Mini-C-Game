@@ -75,5 +75,7 @@ int					map_check(t_vars *vars);
 void				read_and_display_map(t_vars *vars);
 int					move_player(int key, t_vars *vars);
 int					close_window(t_vars *vars);
+char	next_px(int next_x, int next_y, t_vars *vars);
+int	close_window(t_vars *vars);
 
 #endif
