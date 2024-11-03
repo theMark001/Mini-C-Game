@@ -14,10 +14,10 @@
 # define SO_LONG_H
 
 # include "mlx.h"
-#include <fcntl.h>    // For open() and O_RDONLY
-#include <unistd.h>   // For close(), read(), ssize_t
-#include <stdio.h>    // For perror()
-#include <stdlib.h>   // For exit() and EXIT_FAILURE
+# include <fcntl.h>  // For open() and O_RDONLY
+# include <stdio.h>  // For perror()
+# include <stdlib.h> // For exit() and EXIT_FAILURE
+# include <unistd.h> // For close(), read(), ssize_t
 
 # define KEY_W 13
 # define KEY_A 0
@@ -77,6 +77,6 @@ char				next_px(int next_x, int next_y, t_vars *vars);
 int					close_window(t_vars *vars);
 int					open_map_file(const char *path);
 int					is_enclosed_in_walls(int fd);
-int		ft_printf(const char *format, ...);
+int					ft_printf(const char *format, ...);
 
 #endif
