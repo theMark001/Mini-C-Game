@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 22:06:40 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:19:04 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ int	close_window(t_vars *vars)
 int	calculate_tile_coordinate(int position, int tile_size)
 {
 	return (position / tile_size);
-}
-
-int	open_map_file(const char *path)
-{
-	int	fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error opening map file");
-		exit(EXIT_FAILURE);
-	}
-	return (fd);
 }
 
 char	find_tile_in_map(int tile_x, int tile_y, int fd)

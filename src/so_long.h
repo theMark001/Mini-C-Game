@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 22:03:36 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:15:05 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int					move_player(int key, t_vars *vars);
 char				next_px(int next_x, int next_y, t_vars *vars);
 
 int					close_window(t_vars *vars);
+int	open_map_file(const char *path);
 
 #endif

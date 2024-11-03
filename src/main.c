@@ -6,11 +6,24 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:59:32 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:14:36 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	open_map_file(const char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening map file");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
 
 void	set_img(t_vars *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:59:27 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:17:28 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,7 @@ void	get_map_info(t_vars *vars)
 	int	fd;
 	int	is_first_line;
 
-	fd = open(vars->path, O_RDONLY);
-	if (fd == -1)
-	{
-		printf("Map file doesn't exist\n");
-		exit(0);
-	}
+	fd = open_map_file(vars->path);
 	initialize_map_info(vars, &is_first_line);
 	read_map_data(fd, vars, &is_first_line);
 	vars->map_info.height += 1;
