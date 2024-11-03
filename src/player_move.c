@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:50:16 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 21:59:41 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_game.h"
+#include "so_long.h"
 
 void	update_position(int key, int *next_x, int *next_y, t_vars *vars)
 {

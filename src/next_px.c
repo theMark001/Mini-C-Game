@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_status.c                                       :+:      :+:    :+:   */
+/*   next_px.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:50:51 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 21:59:38 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini_game.h"
+#include "so_long.h"
 
 char	next_px(int next_x, int next_y, t_vars *vars)
 {
