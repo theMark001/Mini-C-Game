@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 20:40:46 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:42:31 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int ac, char **av)
 	vars.graphics.win = mlx_new_window(vars.graphics.mlx, win_width, win_height,
 			"Mini Game");
 	set_img(&vars);
-	read_and_display_map(&vars, "maps/map.ber");
+	read_and_display_map(&vars);
 	mlx_hook(vars.graphics.win, 2, 1L << 0, move_player, &vars);
 	mlx_hook(vars.graphics.win, 17, 0, close_window, &vars);
 	mlx_loop(vars.graphics.mlx);

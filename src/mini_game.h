@@ -72,8 +72,8 @@ typedef struct useless_4
 
 void get_map_info(t_vars *vars);
 int map_check(t_vars *vars);
+void				read_and_display_map(t_vars *vars);
 
-void				read_and_display_map(t_vars *vars, const char *map_path);
 int	move_player(int key, t_vars *vars);
 int					close_window(t_vars *vars);
 

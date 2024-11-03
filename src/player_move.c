@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 02:47:26 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:42:54 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	move_player(int key, t_vars *vars)
 	printf("Move number: %d \n", vars->state.move_count);
 	// Update the display
 	mlx_clear_window(vars->graphics.mlx, vars->graphics.win);
-	read_and_display_map(vars, "maps/map.ber");
+	read_and_display_map(vars);
 	// Display all collectibles
 	for (int i = 0; i < vars->state.collectible_count; i++)
 	{
