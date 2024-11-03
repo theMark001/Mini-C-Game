@@ -6,11 +6,18 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:59:38 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:01:19 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->graphics.mlx, vars->graphics.win);
+	exit(0);
+	return (0);
+}
 
 char	next_px(int next_x, int next_y, t_vars *vars)
 {
@@ -45,11 +52,4 @@ char	next_px(int next_x, int next_y, t_vars *vars)
 	}
 	close(fd);
 	return ('\0');
-}
-
-int	close_window(t_vars *vars)
-{
-	mlx_destroy_window(vars->graphics.mlx, vars->graphics.win);
-	exit(0);
-	return (0);
 }

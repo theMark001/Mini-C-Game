@@ -7,7 +7,7 @@ MLX_DIR = mlx
 SRC_DIR = src
 
 # Source files
-SRC = $(SRC_DIR)/main.c $(SRC_DIR)/put_img.c  $(SRC_DIR)/player_move.c  $(SRC_DIR)/get_map_info.c $(SRC_DIR)/map_check.c  $(SRC_DIR)/next_px.c 
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/read_and_display_map.c  $(SRC_DIR)/move_player.c  $(SRC_DIR)/get_map_info.c $(SRC_DIR)/map_check.c  $(SRC_DIR)/next_px.c 
 OBJ = $(SRC:.c=.o)
 
 # Target executable name
