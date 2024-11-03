@@ -7,7 +7,7 @@ MLX_DIR = mlx
 SRC_DIR = src
 
 # Source files
-SRC = $(SRC_DIR)/mini_game.c $(SRC_DIR)/win_size.c  $(SRC_DIR)/put_img.c  $(SRC_DIR)/player_move.c 
+SRC = $(SRC_DIR)/mini_game.c $(SRC_DIR)/put_img.c  $(SRC_DIR)/player_move.c  $(SRC_DIR)/map_info.c $(SRC_DIR)/map_check.c 
 OBJ = $(SRC:.c=.o)
 
 # Target executable name
@@ -15,7 +15,7 @@ NAME = mini_game
 
 # Rule to compile .c files into .o files
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@  # <- This line must have a tab before $(CC)
+	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@
 
 
 $(NAME): $(OBJ)

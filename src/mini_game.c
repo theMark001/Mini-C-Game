@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/02 23:26:32 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 03:03:06 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(void)
 {
 	t_vars		vars;
-	t_map_info	size;
 	int			win_width;
 	int			win_height;
 
@@ -23,10 +22,13 @@ int	main(void)
 	vars.graphics.mlx = mlx_init();
 	vars.state.initial_position_set = 0;
 	// Setting up Window
-	size = get_map_info("maps/map.ber");
+	get_map_info("maps/map.ber", &vars);
+	if (map_check(&vars) == 1) {
+		exit (0);
+	}
 	vars.state.tile_size = 50;
-	win_width = size.width * vars.state.tile_size;
-	win_height = size.height * vars.state.tile_size;
+	win_width = vars.map_info.width * vars.state.tile_size;
+	win_height = vars.map_info.height * vars.state.tile_size;
 	vars.graphics.win = mlx_new_window(vars.graphics.mlx, win_width, win_height,
 			"Mini Game");
 	// Setting up Imgs

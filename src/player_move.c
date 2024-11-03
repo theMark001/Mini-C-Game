@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/02 23:33:42 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 02:47:26 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,11 @@ int	close_window(t_vars *vars)
 
 int	move_player(int key, t_vars *vars)
 {
-	t_map_info	info;
 	int			next_x;
 	int			next_y;
 	char		tile;
 	int			already_saved;
-
-	info = get_map_info("maps/map.ber");
+	
 	next_x = vars->state.current_x;
 	next_y = vars->state.current_y;
 	if (key == KEY_W)
@@ -101,11 +99,18 @@ int	move_player(int key, t_vars *vars)
 	}
 	else if (tile == 'E')
 	{
-		if (info.all_collectible == vars->state.collectible_count)
+		// printf("Address of map_info in move_player: %p\n", (void*)map_info);
+		// printf("All c: %d  collected: %d \n", map_info->all_collectible, vars->state.collectible_count);
+		// printf("all_collectible: %d  width: %d , height: %d \n", map_info->all_collectible,  map_info->width, map_info->height);
+		if (vars->map_info.all_collectible == vars->state.collectible_count)
 			close_window(vars);
+    else
+      return 0;
 	}
 	vars->state.current_x = next_x;
 	vars->state.current_y = next_y;
+	vars->state.move_count++;
+	printf("Move number: %d \n", vars->state.move_count);
 	// Update the display
 	mlx_clear_window(vars->graphics.mlx, vars->graphics.win);
 	read_and_display_map(vars, "maps/map.ber");
