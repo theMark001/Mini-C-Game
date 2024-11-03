@@ -1,34 +1,35 @@
-# Compiler and flags
-CC = gcc
+# Vars
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
-# Directories
+NAME = so_long
+SRCDIR = src
+OBJDIR = obj
 MLX_DIR = mlx
-SRC_DIR = src
-LIBFT_DIR = $(SRC_DIR)  # Directory containing libftprintf.a
+LIBFT_DIR = libft
+SRC = get_map_info.c is_enclosed_in_walls.c main.c map_check.c move_player.c next_px.c read_and_display_map.c get_map_info.o is_enclosed_in_walls.o main.o map_check.o move_player.o next_px.o read_and_display_map.o
+OBJS = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
+SRCS = $(addprefix $(SRCDIR)/,$(SRC))
 
-# Source files
-SRC = $(SRC_DIR)/main.c $(SRC_DIR)/read_and_display_map.c  $(SRC_DIR)/move_player.c  $(SRC_DIR)/get_map_info.c $(SRC_DIR)/map_check.c  $(SRC_DIR)/next_px.c $(SRC_DIR)/is_enclosed_in_walls.c 
-OBJ = $(SRC:.c=.o)
+# Rules of files
+$(NAME): $(OBJS)
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lftprintf -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
 
-# Target executable name
-NAME = mini_game
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	mkdir -p $(OBJDIR)
+	$(CC) $(CFLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
-# Rule to compile .c files into .o files
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@  # Add libft include if needed
 
-# Link the executable with libftprintf and other dependencies
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lftprintf -framework OpenGL -framework AppKit -o $(NAME)
+# Rules of actions
+.PHONY: all clean fclean re
 
-# Clean up object files and executable
+all: $(NAME)
+
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
+	rm -rf $(OBJDIR)
 
-re: fclean $(NAME)
-
-.PHONY: clean fclean re
+re: fclean all
