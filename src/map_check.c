@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:13:42 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 23:26:44 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	is_rectangular(int fd)
 	first_length = -1;
 	current_length = 0;
 	i = 0;
-	while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0)
+	bytes_read = read(fd, buffer, sizeof(buffer));
+	while (bytes_read > 0)
 	{
 		i = 0;
 		while (i < bytes_read)
@@ -50,6 +51,7 @@ int	is_rectangular(int fd)
 				return (close(fd), 0);
 			i++;
 		}
+		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
 	close(fd);
 	return (first_length == -1 || current_length == first_length);
