@@ -306,7 +306,7 @@ void	*mlx_xpm_file_to_image(mlx_ptr_t *xvar,char *path,int *width,int *height)
   char	*ptr;
   mlx_img_list_t	*img;
 
-  if ((fd = open_map_file(path))==-1 || (size = lseek(fd,0,SEEK_END))==-1 ||
+  if ((fd = open(path,O_RDONLY))==-1 || (size = lseek(fd,0,SEEK_END))==-1 ||
       (ptr = mmap(0,size,PROT_WRITE|PROT_READ,MAP_PRIVATE,fd,0))==
       (void *)MAP_FAILED)
     {

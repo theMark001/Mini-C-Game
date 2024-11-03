@@ -77,6 +77,6 @@ int					move_player(int key, t_vars *vars);
 char				next_px(int next_x, int next_y, t_vars *vars);
 
 int					close_window(t_vars *vars);
-int	open_map_file(const char *path);
+int					open_map_file(const char *path);
 
 #endif
