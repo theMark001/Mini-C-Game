@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 20:48:43 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 21:07:58 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int is_rectangular(const char *path)
     }
 
     close(fd);
-    return 1; // Return 1 for success
+    return 1;
 }
 
 int is_enclosed_in_walls(const char *path)
