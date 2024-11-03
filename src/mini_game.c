@@ -6,14 +6,17 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 03:13:59 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 03:41:07 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_game.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
+	if (ac != 2)
+		return (0);
+		
 	t_vars		vars;
 	int			win_width;
 	int			win_height;
@@ -22,8 +25,8 @@ int	main(void)
 	vars.graphics.mlx = mlx_init();
 	vars.state.initial_position_set = 0;
 	// Setting up Window
-	get_map_info("maps/map.ber", &vars);
-	if (map_check(&vars) == 1) {
+	get_map_info(av[1], &vars);
+	if (map_check(av[1], &vars) == 1) {
 		exit (0);
 	}
 	vars.state.tile_size = 50;
