@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_img.c                                          :+:      :+:    :+:   */
+/*   read_and_display_map.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:59:48 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:31:05 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	read_and_display_map(t_vars *vars)
 
 	x = 0;
 	y = 0;
-	fd = open(vars->path, O_RDONLY);
+	fd = open_map_file(vars->path);
 	while (read(fd, &buffer, 1) > 0)
 	{
 		if (buffer == '\n')

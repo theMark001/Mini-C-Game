@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 21:59:36 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:29:40 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_rectangular(const char *path)
 	first_length = -1;
 	current_length = 0;
 	i = 0;
-	fd = open(path, O_RDONLY);
+	fd = open_map_file(path);
 	while ((bytes_read = read(fd, buffer, sizeof(buffer))) > 0)
 	{
 		i = 0;
@@ -89,7 +89,7 @@ int	is_enclosed_in_walls(const char *path)
 
 	line_length = -1;
 	is_first = 1;
-	fd = open(path, O_RDONLY);
+	fd = open_map_file(path);
 	while ((bytes_read = read(fd, buffer, sizeof(buffer) - 1)) > 0)
 	{
 		buffer[bytes_read] = '\0';
