@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 22:01:19 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 22:06:40 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,32 @@ int	close_window(t_vars *vars)
 	return (0);
 }
 
-char	next_px(int next_x, int next_y, t_vars *vars)
+int	calculate_tile_coordinate(int position, int tile_size)
 {
-	int		tile_x;
-	int		tile_y;
-	int		fd;
+	return (position / tile_size);
+}
+
+int	open_map_file(const char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening map file");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
+
+char	find_tile_in_map(int tile_x, int tile_y, int fd)
+{
 	char	buffer;
 	int		current_x;
 	int		current_y;
 
 	current_x = 0;
 	current_y = 0;
-	tile_x = next_x / vars->state.tile_size;
-	tile_y = next_y / vars->state.tile_size;
-	fd = open(vars->path, O_RDONLY);
 	while (read(fd, &buffer, 1) == 1)
 	{
 		if (buffer == '\n')
@@ -43,13 +55,24 @@ char	next_px(int next_x, int next_y, t_vars *vars)
 		else
 		{
 			if (current_x == tile_x && current_y == tile_y)
-			{
-				close(fd);
 				return (buffer);
-			}
 			current_x++;
 		}
 	}
-	close(fd);
 	return ('\0');
+}
+
+char	next_px(int next_x, int next_y, t_vars *vars)
+{
+	int		tile_x;
+	int		tile_y;
+	int		fd;
+	char	tile;
+
+	tile_x = calculate_tile_coordinate(next_x, vars->state.tile_size);
+	tile_y = calculate_tile_coordinate(next_y, vars->state.tile_size);
+	fd = open_map_file(vars->path);
+	tile = find_tile_in_map(tile_x, tile_y, fd);
+	close(fd);
+	return (tile);
 }
