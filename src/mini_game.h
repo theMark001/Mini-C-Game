@@ -67,13 +67,15 @@ typedef struct useless_4
 	t_graphics		graphics;
 	t_game_state	state;
 	t_map_info    map_info;
+	char							*path;
 }					t_vars;
 
-void get_map_info(const char *filename, t_vars *vars);
+void get_map_info(t_vars *vars);
+int map_check(t_vars *vars);
+
 void				read_and_display_map(t_vars *vars, const char *map_path);
 int	move_player(int key, t_vars *vars);
 int					close_window(t_vars *vars);
-int map_check(char *path, t_vars *vars);
 
 
 #endif

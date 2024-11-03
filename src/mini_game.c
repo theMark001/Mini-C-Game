@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 19:35:36 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:40:46 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
+	vars.path = av[1];
 	vars.graphics.mlx = mlx_init();
 	vars.state.initial_position_set = 0;
-	get_map_info(av[1], &vars);
-	if (map_check(av[1], &vars) == 1)
+	get_map_info(&vars);
+	if (map_check(&vars) == 1)
 		exit(0);
 	vars.state.tile_size = 50;
 	win_width = vars.map_info.width * vars.state.tile_size;

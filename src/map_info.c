@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 19:48:50 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:39:37 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	update_map_info(char c, t_vars *vars, int *is_first_line)
 	}
 }
 
-void	get_map_info(const char *filename, t_vars *vars)
+void	get_map_info(t_vars *vars)
 {
 	int		fd;
 	ssize_t	bytes_read;
@@ -40,7 +40,7 @@ void	get_map_info(const char *filename, t_vars *vars)
 	int		is_first_line;
 
 	is_first_line = 1;
-	fd = open(filename, O_RDONLY);
+	fd = open(vars->path, O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Map file doesn't exist\n");

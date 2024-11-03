@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 03:41:46 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:41:16 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int is_rectangular(const char *filename);
 int is_enclosed_in_walls(const char *filename);
 
-int map_check(char *path, t_vars *vars)
+int map_check(t_vars *vars)
 {
     if (vars->map_info.all_players != 1) {
         printf("Error: map should contain exactly one player.\n");
@@ -27,11 +27,11 @@ int map_check(char *path, t_vars *vars)
         printf("Error: map should contain at least one collectible.\n");
         return 1;
     }
- 		else if (is_rectangular(path) != 1) {
+ 		else if (is_rectangular(vars->path) != 1) {
 			printf("Error: map is not rectangular.\n");
 			return 1;
 		}
-		else if (!is_enclosed_in_walls(path)) {
+		else if (!is_enclosed_in_walls(vars->path)) {
 				printf("Error: map is not enclosed in walls.\n");
 				return 1;
 		}
