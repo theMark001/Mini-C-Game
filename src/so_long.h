@@ -77,5 +77,6 @@ char				next_px(int next_x, int next_y, t_vars *vars);
 int					close_window(t_vars *vars);
 int					open_map_file(const char *path);
 int					is_enclosed_in_walls(int fd);
+int		ft_printf(const char *format, ...);
 
 #endif

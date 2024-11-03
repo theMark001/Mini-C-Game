@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:41:49 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/04 00:20:32 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	move_player(int key, t_vars *vars)
 	vars->state.current_x = next_x;
 	vars->state.current_y = next_y;
 	vars->state.move_count++;
-	printf("Move number: %d \n", vars->state.move_count);
+	ft_printf("Move number: %d\n", vars->state.move_count);
 	refresh_display(vars);
 	return (0);
 }
