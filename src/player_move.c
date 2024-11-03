@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 20:47:04 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 21:43:22 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ char	next_px(int next_x, int next_y, t_vars *vars)
 	int		fd;
 	char	buffer;
 	int		current_x;
-  int current_y;
+	int		current_y;
 
 	current_x = 0;
-  current_y = 0;
+	current_y = 0;
 	tile_x = next_x / vars->state.tile_size;
 	tile_y = next_y / vars->state.tile_size;
 	fd = open(vars->path, O_RDONLY);
@@ -56,11 +56,12 @@ int	close_window(t_vars *vars)
 
 int	move_player(int key, t_vars *vars)
 {
-	int			next_x;
-	int			next_y;
-	char		tile;
-	int			already_saved;
-	
+	int		next_x;
+	int		next_y;
+	char	tile;
+	int		already_saved;
+	int		i;
+
 	next_x = vars->state.current_x;
 	next_y = vars->state.current_y;
 	if (key == KEY_W)
@@ -81,7 +82,8 @@ int	move_player(int key, t_vars *vars)
 	else if (tile == 'C')
 	{
 		already_saved = 0;
-		for (int i = 0; i < vars->state.collectible_count; i++)
+		i = 0;
+		while (i < vars->state.collectible_count)
 		{
 			if (vars->state.collectible_x[i] == next_x
 				&& vars->state.collectible_y[i] == next_y)
@@ -89,6 +91,7 @@ int	move_player(int key, t_vars *vars)
 				already_saved = 1;
 				break ;
 			}
+			i++;
 		}
 		if (!already_saved && vars->state.collectible_count < MAX_COLLECTIBLES)
 		{
@@ -99,33 +102,28 @@ int	move_player(int key, t_vars *vars)
 	}
 	else if (tile == 'E')
 	{
-		// printf("Address of map_info in move_player: %p\n", (void*)map_info);
-		// printf("All c: %d  collected: %d \n", map_info->all_collectible, vars->state.collectible_count);
-		// printf("all_collectible: %d  width: %d , height: %d \n", map_info->all_collectible,  map_info->width, map_info->height);
 		if (vars->map_info.all_collectible == vars->state.collectible_count)
 			close_window(vars);
-    else
-      return 0;
+		else
+			return (0);
 	}
 	vars->state.current_x = next_x;
 	vars->state.current_y = next_y;
 	vars->state.move_count++;
 	printf("Move number: %d \n", vars->state.move_count);
-	// Update the display
 	mlx_clear_window(vars->graphics.mlx, vars->graphics.win);
 	read_and_display_map(vars);
-	// Display all collectibles
-	for (int i = 0; i < vars->state.collectible_count; i++)
+	i = 0;
+	while (i < vars->state.collectible_count)
 	{
 		mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win,
 			vars->graphics.bg_img, vars->state.collectible_x[i],
 			vars->state.collectible_y[i]);
+		i++;
 	}
-	// display bg at the player start posithion
 	mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win,
 		vars->graphics.bg_img, vars->state.start_pos_x,
 		vars->state.start_pos_y);
-	// Display player at current position and
 	mlx_put_image_to_window(vars->graphics.mlx, vars->graphics.win,
 		vars->graphics.player_img, vars->state.current_x,
 		vars->state.current_y);
