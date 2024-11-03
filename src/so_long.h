@@ -14,12 +14,10 @@
 # define SO_LONG_H
 
 # include "mlx.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+#include <fcntl.h>    // For open() and O_RDONLY
+#include <unistd.h>   // For close(), read(), ssize_t
+#include <stdio.h>    // For perror()
+#include <stdlib.h>   // For exit() and EXIT_FAILURE
 
 # define KEY_W 13
 # define KEY_A 0

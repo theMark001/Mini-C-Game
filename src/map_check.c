@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:26:44 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 23:42:46 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ int	map_check_conditions(t_vars *vars)
 {
 	if (vars->map_info.all_players != 1)
 	{
-		printf("Error: map should contain exactly one player.\n");
+		perror("Error: map should contain exactly one player.\n");
 		return (1);
 	}
 	if (vars->map_info.all_exits != 1)
 	{
-		printf("Error: map should contain exactly one exit.\n");
+		perror("Error: map should contain exactly one exit.\n");
 		return (1);
 	}
 	if (vars->map_info.all_collectible < 1)
 	{
-		printf("Error: map should contain at least one collectible.\n");
+		perror("Error: map should contain at least one collectible.\n");
 		return (1);
 	}
 	return (0);
@@ -86,12 +86,12 @@ int	map_check(t_vars *vars)
 		return (1);
 	if (!is_rectangular(fd))
 	{
-		printf("Error: map is not rectangular.\n");
+		perror("Error: map is not rectangular.\n");
 		return (1);
 	}
 	if (!is_enclosed_in_walls(fd))
 	{
-		printf("Error: map is not enclosed in walls.\n");
+		perror("Error: map is not enclosed in walls.\n");
 		return (1);
 	}
 	return (0);
