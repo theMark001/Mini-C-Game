@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 02:57:43 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 03:11:44 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void get_map_info(const char *filename, t_vars *vars)
     int fd = open(filename, O_RDONLY);
     if (fd == -1)  // Check if file opened successfully
     {
-        perror("Error opening file");
-        exit(EXIT_FAILURE);
+        printf("Map file don't exist \n");
+        exit(0);
     }
 
     // Initialize fields to zero to avoid garbage values
