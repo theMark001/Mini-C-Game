@@ -6,41 +6,15 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 20:41:16 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:48:43 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_game.h"
 
-int is_rectangular(const char *filename);
-int is_enclosed_in_walls(const char *filename);
-
-int map_check(t_vars *vars)
+int is_rectangular(const char *path)
 {
-    if (vars->map_info.all_players != 1) {
-        printf("Error: map should contain exactly one player.\n");
-        return 1;
-    } else if (vars->map_info.all_exits != 1) {
-        printf("Error: map should contain exactly one exit.\n");
-        return 1;
-    } else if (vars->map_info.all_collectible < 1) {
-        printf("Error: map should contain at least one collectible.\n");
-        return 1;
-    }
- 		else if (is_rectangular(vars->path) != 1) {
-			printf("Error: map is not rectangular.\n");
-			return 1;
-		}
-		else if (!is_enclosed_in_walls(vars->path)) {
-				printf("Error: map is not enclosed in walls.\n");
-				return 1;
-		}
-		return 0;
-}
-
-int is_rectangular(const char *filename)
-{
-    int fd = open(filename, O_RDONLY);
+    int fd = open(path, O_RDONLY);
     ssize_t bytes_read;
     char buffer[1024];
     int first_line_length = -1;
@@ -73,9 +47,9 @@ int is_rectangular(const char *filename)
     return 1; // Return 1 for success
 }
 
-int is_enclosed_in_walls(const char *filename)
+int is_enclosed_in_walls(const char *path)
 {
-    int fd = open(filename, O_RDONLY);
+    int fd = open(path, O_RDONLY);
     ssize_t bytes_read;
     char buffer[1024];
     int line_length = -1;
@@ -120,4 +94,27 @@ int is_enclosed_in_walls(const char *filename)
 
     close(fd);
     return 1; // Return 1 for success if all checks pass
+}
+
+int map_check(t_vars *vars)
+{
+    if (vars->map_info.all_players != 1) {
+        printf("Error: map should contain exactly one player.\n");
+        return 1;
+    } else if (vars->map_info.all_exits != 1) {
+        printf("Error: map should contain exactly one exit.\n");
+        return 1;
+    } else if (vars->map_info.all_collectible < 1) {
+        printf("Error: map should contain at least one collectible.\n");
+        return 1;
+    }
+ 		else if (is_rectangular(vars->path) != 1) {
+			printf("Error: map is not rectangular.\n");
+			return 1;
+		}
+		else if (!is_enclosed_in_walls(vars->path)) {
+				printf("Error: map is not enclosed in walls.\n");
+				return 1;
+		}
+		return 0;
 }

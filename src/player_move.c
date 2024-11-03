@@ -6,13 +6,13 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 20:42:54 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 20:47:04 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_game.h"
 
-char	next_px(int next_x, int next_y, const char *map_path, int tile_size)
+char	next_px(int next_x, int next_y, t_vars *vars)
 {
 	int		tile_x;
 	int		tile_y;
@@ -23,9 +23,9 @@ char	next_px(int next_x, int next_y, const char *map_path, int tile_size)
 
 	current_x = 0;
   current_y = 0;
-	tile_x = next_x / tile_size;
-	tile_y = next_y / tile_size;
-	fd = open(map_path, O_RDONLY);
+	tile_x = next_x / vars->state.tile_size;
+	tile_y = next_y / vars->state.tile_size;
+	fd = open(vars->path, O_RDONLY);
 	while (read(fd, &buffer, 1) == 1)
 	{
 		if (buffer == '\n')
@@ -75,7 +75,7 @@ int	move_player(int key, t_vars *vars)
 		close_window(vars);
 	else
 		return (0);
-	tile = next_px(next_x, next_y, "maps/map.ber", vars->state.tile_size);
+	tile = next_px(next_x, next_y, vars);
 	if (tile == '1')
 		return (0);
 	else if (tile == 'C')
