@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:14:30 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:25:01 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/03 23:30:31 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	read_and_process_buffer(char *buffer, ssize_t bytes_read, int *line_length)
 		{
 			current_length = &buffer[i] - line_start;
 			if (!check_line_length(current_length, line_length)
-				|| !process_line(line_start, current_length, is_first, buffer[i
-					+ 1] == '\0'))
+				|| !process_line(line_start, current_length, is_first,
+					buffer[i + 1] == '\0'))
 				return (0);
 			line_start = &buffer[i + 1];
 			is_first = 0;
