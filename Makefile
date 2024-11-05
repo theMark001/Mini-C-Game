@@ -1,5 +1,5 @@
 # Vars
-CC = cc
+CC = cc # cc / clang
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 SRCDIR = src
@@ -17,6 +17,10 @@ $(NAME): $(OBJS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -I$(MLX_DIR) -I$(LIBFT_DIR) -c $< -o $@
+
+# Debug build target
+debug: CFLAGS += -g
+debug: re
 
 # Rules of actions
 .PHONY: all clean fclean re
