@@ -13,7 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx.h"
+# include <mlx.h>
 # include <fcntl.h>  // For open() and O_RDONLY
 # include <stdio.h>  // For perror()
 # include <stdlib.h> // For exit() and EXIT_FAILURE
