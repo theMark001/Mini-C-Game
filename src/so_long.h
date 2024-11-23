@@ -49,7 +49,7 @@ typedef struct useless_2
 	int				collectible_y[MAX_COLLECTIBLES];
 }					t_game_state;
 
-typedef struct useless_3
+typedef struct t_graphics
 {
 	void			*mlx;
 	void			*win;
