@@ -5,7 +5,7 @@ NAME = so_long
 SRCDIR = src
 OBJDIR = obj
 MLX_DIR = minilibx-macos 	# minilibx-macos			minilibx-linux
-LIBFT_DIR = libft 
+LIBFT_DIR = libft
 SRC = get_map_info.c is_enclosed_in_walls.c main.c map_check.c move_player.c next_px.c read_and_display_map.c
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
