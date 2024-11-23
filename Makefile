@@ -13,6 +13,7 @@ SRCS = $(addprefix $(SRCDIR)/,$(SRC))
 # Rules of files
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lftprintf -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
+# -L/usr/lib -lXext -lX11 -lm -lz
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
@@ -33,6 +34,5 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(OBJDIR)
 
 re: fclean all
