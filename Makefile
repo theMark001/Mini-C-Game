@@ -1,10 +1,10 @@
 # Vars
-CC = cc # cc / clang
+CC = cc 	# cc / clang
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 SRCDIR = src
 OBJDIR = obj
-MLX_DIR = mlx
+MLX_DIR = minilibx-linux 	# minilibx-macos			minilibx-linux
 LIBFT_DIR = libft 
 SRC = get_map_info.c is_enclosed_in_walls.c main.c map_check.c move_player.c next_px.c read_and_display_map.c
 OBJS = $(addprefix $(OBJDIR)/,$(SRC:.c=.o))
@@ -13,6 +13,8 @@ SRCS = $(addprefix $(SRCDIR)/,$(SRC))
 # Rules of files
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lftprintf -framework OpenGL -framework AppKit -o $(NAME) $(OBJS)
+	
+# $(CC) $(CFLAGS) -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lftprintf -framework OpenGL -framework AppKit -o $(NAME) $(OBJS) 
 # -L/usr/lib -lXext -lX11 -lm -lz
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
