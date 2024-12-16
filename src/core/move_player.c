@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 04:15:38 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 04:30:15 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,11 @@ int	move_player(int key, t_vars *vars)
 	vars->state.current_x = next_x;
 	vars->state.current_y = next_y;
 	vars->state.move_count++;
-	printf("Player position updated to: (%d, %d)\n", vars->state.current_x, vars->state.current_y);
+	ft_printf("Player position updated to: (%d, %d)\n", vars->state.current_x,
+		vars->state.current_y);
 	ft_printf("Move number: %d\n", vars->state.move_count);
-	printf("Tile at next position (%d, %d): '%c'\n", next_x, next_y, tile);
-	printf("Key pressed: %d\n", key);
+	ft_printf("Tile at next position (%d, %d): '%c'\n", next_x, next_y, tile);
+	ft_printf("Key pressed: %d\n", key);
 	refresh_display(vars);
 	return (0);
 }

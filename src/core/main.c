@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 04:15:35 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 04:35:16 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,39 @@ int	main(int ac, char **av)
 	int		win_width;
 	int		win_height;
 
-	// Initialize the vars structure
 	vars.state.collectible_count = 0;
 	vars.state.move_count = 0;
 	vars.state.initial_position_set = 0;
-
 	if (ac != 2)
 	{
 		fprintf(stderr, "Usage: %s <map_file>\n", av[0]);
 		return (EXIT_FAILURE);
 	}
-
 	vars.path = av[1];
 	vars.graphics.mlx = mlx_init();
+
+
+
+	
 	if (!vars.graphics.mlx)
 	{
 		fprintf(stderr, "Error initializing MLX\n");
 		return (EXIT_FAILURE);
 	}
 
+	
 	get_map_info(&vars);
+
+	
 	if (map_check(&vars) == 1)
 		exit(EXIT_FAILURE);
 
+	
 	vars.state.tile_size = 50;
 	win_width = vars.map_info.width * vars.state.tile_size;
 	win_height = vars.map_info.height * vars.state.tile_size;
 
+	
 	vars.graphics.win = mlx_new_window(vars.graphics.mlx, win_width, win_height,
 			"Mini Game");
 	if (!vars.graphics.win)
@@ -83,12 +89,11 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 
+	
 	set_img(&vars);
 	read_and_display_map(&vars);
-
 	mlx_hook(vars.graphics.win, 2, 1L << 0, move_player, &vars);
 	mlx_hook(vars.graphics.win, 17, 0, close_window, &vars);
 	mlx_loop(vars.graphics.mlx);
-
 	return (0);
 }

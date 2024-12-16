@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER
-# define HEADER
+#ifndef HEADER_H
+# define HEADER_H
 
-# include "mlx.h" 		// For mlx funcs
+# include "mlx.h"    // For mlx funcs
 # include <fcntl.h>  // For open() and O_RDONLY
 # include <stdio.h>  // For perror()
 # include <stdlib.h> // For exit() and EXIT_FAILURE
 # include <unistd.h> // For close(), read(), ssize_t
 
-#define KEY_W 119     
-#define KEY_A 97    
-#define KEY_S 115    
-#define KEY_D 100    
-#define KEY_ESC 65307 
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_ESC 65307
 
 # define MAX_COLLECTIBLES 100
 
@@ -69,15 +69,21 @@ typedef struct useless_4
 	char			*path;
 }					t_vars;
 
+// Map
 void				get_map_info(t_vars *vars);
-int					map_check(t_vars *vars);
 void				read_and_display_map(t_vars *vars);
+
+// Core
 int					move_player(int key, t_vars *vars);
 char				next_px(int next_x, int next_y, t_vars *vars);
-
-int					close_window(t_vars *vars);
 int					open_map_file(const char *path);
-int					is_enclosed_in_walls(int fd);
+int					close_window(t_vars *vars);
+
+// Utils
 int					ft_printf(const char *format, ...);
+
+// Check
+int					is_enclosed_in_walls(int fd);
+int					map_check(t_vars *vars);
 
 #endif
