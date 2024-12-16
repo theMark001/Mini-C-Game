@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "header.h"
 
 int	open_map_file(const char *path)
 {

@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 23:14:30 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:30:31 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 03:22:01 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "header.h"
 
 int	process_wall_line(const char *line, int length)
 {

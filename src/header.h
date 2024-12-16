@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef HEADER
+# define HEADER
 
-# include <mlx.h>
+# include "mlx.h" 		// For mlx funcs
 # include <fcntl.h>  // For open() and O_RDONLY
 # include <stdio.h>  // For perror()
 # include <stdlib.h> // For exit() and EXIT_FAILURE

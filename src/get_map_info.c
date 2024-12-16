@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 22:17:28 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 03:21:53 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "header.h"
 
 void	update_map_info(char c, t_vars *vars, int *is_first_line)
 {

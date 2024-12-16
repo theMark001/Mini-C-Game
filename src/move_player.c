@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msylaiev <msylaiev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/23 19:56:43 by msylaiev         ###   ########.fr       */
+/*   Updated: 2024/12/16 03:22:10 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "header.h"
 
 void	update_position(int key, int *next_x, int *next_y, t_vars *vars)
 {

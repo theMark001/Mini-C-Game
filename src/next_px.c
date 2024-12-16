@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   next_px.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msylaiev <msylaiev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/23 19:27:31 by msylaiev         ###   ########.fr       */
+/*   Updated: 2024/12/16 03:22:11 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "header.h"
 
 int	close_window(t_vars *vars)
 {

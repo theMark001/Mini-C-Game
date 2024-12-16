@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 23:42:46 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 03:22:07 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "header.h"
 
 int	check_and_update_length(int *current_length, int *first_length)
 {
