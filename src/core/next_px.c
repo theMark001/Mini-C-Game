@@ -6,11 +6,24 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 04:28:46 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 04:46:36 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+int	open_map_file(const char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening map file");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
 
 int	close_window(t_vars *vars)
 {
