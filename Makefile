@@ -7,7 +7,10 @@ OBJDIR = obj
 MLX_DIR = libs/mlx
 LIBFT_DIR = libs/libft
 FTPRINTF_DIR = libs/libftprintf
-SRC = get_map_info.c is_enclosed_in_walls.c main.c map_check.c move_player.c next_px.c read_and_display_map.c
+SRC_CHECK = check/is_enclosed_in_walls.c  check/map_check.c
+SRC_CORE = core/main.c  core/move_player.c  core/next_px.c
+SRC_MAP = map/get_map_info.c  map/read_and_display_map.c
+SRC = $(SRC_CHECK) $(SRC_CORE) $(SRC_MAP)
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 
