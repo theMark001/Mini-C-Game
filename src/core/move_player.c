@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 03:22:10 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 04:15:38 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void	update_position(int key, int *next_x, int *next_y, t_vars *vars)
 {

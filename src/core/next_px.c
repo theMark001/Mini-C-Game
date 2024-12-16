@@ -6,11 +6,11 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:50:51 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 03:22:11 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/16 04:15:41 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 int	close_window(t_vars *vars)
 {
