@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
+/*   By: msylaiev <msylaiev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/11/03 22:15:05 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/11/23 20:30:42 by msylaiev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 # include <stdlib.h> // For exit() and EXIT_FAILURE
 # include <unistd.h> // For close(), read(), ssize_t
 
-# define KEY_W 13
-# define KEY_A 0
-# define KEY_S 1
-# define KEY_D 2
-# define KEY_ESC 53
+#define KEY_W 119     
+#define KEY_A 97    
+#define KEY_S 115    
+#define KEY_D 100    
+#define KEY_ESC 65307 
+
 # define MAX_COLLECTIBLES 100
 
 typedef struct useless_1
