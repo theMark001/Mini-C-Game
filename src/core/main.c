@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:34:10 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:42:49 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av)
 	
 	if (ac != 2)
 	{
-		ft_printf("Usage: ./so_long <map_file>\n");
+		ft_printf("Error - Usage: ./so_long <map_file>\n");
 		return 0;
 	}
 	check_args_and_init_vars(av, &vars);
