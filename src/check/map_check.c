@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:54:14 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:57:56 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,9 +160,17 @@ int has_valid_extension(const char *path)
   if (path_len < ext_len)
     return 0;
 
-  // Compare the last ext_len characters with ".ber"
+  // Ensure the path ends with ".ber" and does not have another ".ber" before it
   if (ft_strncmp(path + path_len - ext_len, extension, ext_len) == 0)
-    return 1;
+  {
+    // Check if the character before the ".ber" is not a dot (to reject ".ber.ber")
+    if (path_len > ext_len && path[path_len - ext_len - 1] != '.')
+      return 1;
+
+    // If ".ber" is at the beginning (invalid case), reject it
+    if (path_len == ext_len)
+      return 1;
+  }
 
   return 0;
 }
