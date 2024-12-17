@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 01:44:30 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:22:34 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	is_rectangular(int fd)
 
 	first_length = -1;
 	current_length = 0;
-	i = 0;
 	bytes_read = read(fd, buffer, sizeof(buffer));
 	while (bytes_read > 0)
 	{
@@ -61,43 +60,126 @@ int	map_check_conditions(t_vars *vars)
 {
 	if (vars->map_info.all_players != 1)
 	{
-		ft_printf("%d-all_players\n", vars->map_info.all_players); // Remove it later
 		ft_printf("Error: map should contain exactly one player.\n");
 		return (1);
 	}
 	if (vars->map_info.all_exits != 1)
 	{
-		ft_printf("%d-all_exits\n", vars->map_info.all_exits); // Remove it later
 		ft_printf("Error: map should contain exactly one exit.\n");
 		return (1);
 	}
 	if (vars->map_info.all_collectible < 1)
 	{
-		ft_printf("%d-all_collectible\n", vars->map_info.all_collectible); // Remove it later
 		ft_printf("Error: map should contain at least one collectible.\n");
 		return (1);
 	}
 	return (0);
 }
 
-int	map_check(t_vars *vars)
+/*
+** New function: count_map_chars
+** Reads the entire map file once, counting the number of 'P', 'E', 'C',
+** as well as determining width and height.
+*/
+
+int	count_map_chars(t_vars *vars)
 {
-	int	fd;
+	int		fd;
+	char	buffer[1024];
+	ssize_t	bytes_read;
+	ssize_t	i;
+	int		is_first_line;
+	int		players, exits, collectibles;
+	int		width, height;
+
+	players = 0;
+	exits = 0;
+	collectibles = 0;
+	width = 0;
+	height = 0;
+	is_first_line = 1;
 
 	fd = open_map_file(vars->path);
+	if (fd < 0)
+	{
+		ft_printf("Error: Unable to open map file for counting.\n");
+		return (0);
+	}
+
+	bytes_read = read(fd, buffer, sizeof(buffer));
+	while (bytes_read > 0)
+	{
+		i = 0;
+		while (i < bytes_read)
+		{
+			char c = buffer[i++];
+			if (c == '\n')
+			{
+				height++;
+				if (is_first_line)
+					is_first_line = 0;
+			}
+			else
+			{
+				if (is_first_line)
+					width++;
+				if (c == 'C')
+					collectibles++;
+				else if (c == 'E')
+					exits++;
+				else if (c == 'P')
+					players++;
+			}
+		}
+		bytes_read = read(fd, buffer, sizeof(buffer));
+	}
+	close(fd);
+
+	// If the file doesn't end with a newline, we might need to count
+	// the last line if it contains characters.
+	if (width > 0 && is_first_line == 1)
+		height = 1;
+	else if (width > 0 && !is_first_line)
+		height++;
+
+	vars->map_info.width = width;
+	vars->map_info.height = height;
+	vars->map_info.all_players = players;
+	vars->map_info.all_exits = exits;
+	vars->map_info.all_collectible = collectibles;
+
+	return (1);
+}
+
+int	map_check(t_vars *vars)
+{
+	// First, count the characters in the map
+	if (!count_map_chars(vars))
+		return (1);
+
+	// Now we can safely check conditions as vars->map_info is populated
 	if (map_check_conditions(vars))
 		return (1);
-	if (!is_rectangular(fd))
+
+	// Check if map is rectangular
 	{
-		ft_printf("%d-is_rectangular\n", is_rectangular); // is_rectangular
-		ft_printf("Error: map is not rectangular.\n");
-		return (1);
+		int fd = open_map_file(vars->path);
+		if (!is_rectangular(fd))
+		{
+			ft_printf("Error: map is not rectangular.\n");
+			return (1);
+		}
 	}
-	if (!is_enclosed_in_walls(fd))
+
+	// Check if map is enclosed in walls
 	{
-		ft_printf("%d-is_enclosed_in_walls\n", is_enclosed_in_walls); // is_enclosed_in_walls
-		ft_printf("Error: map is not enclosed in walls.\n");
-		return (1);
+		int fd = open_map_file(vars->path);
+		if (!is_enclosed_in_walls(fd))
+		{
+			ft_printf("Error: map is not enclosed in walls.\n");
+			return (1);
+		}
 	}
+
 	return (0);
 }
