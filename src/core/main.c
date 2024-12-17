@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:42:49 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:49:41 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int	main(int ac, char **av)
 {
 	t_vars	vars;
 	
+	if (!has_valid_extension(av[1]))
+  {
+    ft_printf("Error: Invalid file extension. The map file must have a .ber extension.\n");
+    return 0;
+  }
 	if (ac != 2)
 	{
 		ft_printf("Error - Usage: ./so_long <map_file>\n");

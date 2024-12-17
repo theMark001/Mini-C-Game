@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:27:53 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:49:52 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int					ft_printf(const char *format, ...);
 // Check
 int					is_enclosed_in_walls(int fd);
 int					map_check(t_vars *vars);
+int has_valid_extension(const char *path);
 
 #endif
