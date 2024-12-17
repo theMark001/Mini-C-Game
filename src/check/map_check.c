@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 01:30:16 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:38:39 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ int	map_check_conditions(t_vars *vars)
 {
 	if (vars->map_info.all_players != 1)
 	{
-		perror("Error: map should contain exactly one player.\n");
+		ft_printf("Error: map should contain exactly one player.\n");
 		printf("%d", vars->map_info.all_players);
 		return (1);
 	}
 	if (vars->map_info.all_exits != 1)
 	{
-		perror("Error: map should contain exactly one exit.\n");
+		ft_printf("Error: map should contain exactly one exit.\n");
 		return (1);
 	}
 	if (vars->map_info.all_collectible < 1)
 	{
-		perror("Error: map should contain at least one collectible.\n");
+		ft_printf("Error: map should contain at least one collectible.\n");
 		return (1);
 	}
 	return (0);
@@ -87,12 +87,12 @@ int	map_check(t_vars *vars)
 		return (1);
 	if (!is_rectangular(fd))
 	{
-		perror("Error: map is not rectangular.\n");
+		ft_printf("Error: map is not rectangular.\n");
 		return (1);
 	}
 	if (!is_enclosed_in_walls(fd))
 	{
-		perror("Error: map is not enclosed in walls.\n");
+		ft_printf("Error: map is not enclosed in walls.\n");
 		return (1);
 	}
 	return (0);
