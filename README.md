@@ -4,3 +4,4 @@
 	- make
 3) For macos
 	- make macos
+4) ./so_long maps/map.ber
