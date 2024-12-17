@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 OBJDIR = obj
-MLX_DIR = libs/mlx  # libs/mlx-macos libs/mlx
+MLX_DIR_LINUX = libs/mlx
+MLX_DIR_MACOS = libs/mlx-macos
 LIBFT_DIR = libs/libft
 FTPRINTF_DIR = libs/libftprintf
 
@@ -15,16 +16,19 @@ SRC = $(SRC_CHECK) $(SRC_CORE) $(SRC_MAP)
 
 OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
-# Rules of files
-all: $(LIBFT_DIR)/libft.a $(FTPRINTF_DIR)/libftprintf.a $(MLX_DIR)/libmlx_Linux.a $(NAME)
+# Default MLX settings for Linux
+MLX_DIR = $(MLX_DIR_LINUX)
+MLX_LIB = -lmlx_Linux -lm -lX11 -lXext
 
-# Linux  Name compile
+# Rules for building the program
+all: $(LIBFT_DIR)/libft.a $(FTPRINTF_DIR)/libftprintf.a $(MLX_DIR)/libmlx.a $(NAME)
+
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx_Linux -lm -lX11 -lXext -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft $(MLX_LIB) -o $(NAME)
 
-# # Mac os Name compile
-# $(NAME): $(OBJS)
-# 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+# MacOS-specific build rule
+macos:
+	@$(MAKE) MLX_DIR=$(MLX_DIR_MACOS) MLX_LIB="-lmlx -framework OpenGL -framework AppKit" all
 
 # Build the object files with dynamic directory creation
 $(OBJDIR)/%.o: %.c
@@ -38,7 +42,7 @@ $(LIBFT_DIR)/libft.a:
 $(FTPRINTF_DIR)/libftprintf.a:
 	$(MAKE) -C $(FTPRINTF_DIR)
 
-$(MLX_DIR)/libmlx_Linux.a:
+$(MLX_DIR)/libmlx.a:
 	$(MAKE) -C $(MLX_DIR)
 
 # Debug build target
@@ -46,18 +50,20 @@ debug: CFLAGS += -g
 debug: re
 
 # Rules of actions
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re macos
 
 clean:
 	rm -rf $(OBJDIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(FTPRINTF_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(MLX_DIR_MACOS) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(FTPRINTF_DIR) fclean
-	$(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(MLX_DIR_LINUX) clean
+	$(MAKE) -C $(MLX_DIR_MACOS) clean
 
 re: fclean all
