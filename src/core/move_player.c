@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 04:30:15 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:41:40 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	update_position(int key, int *next_x, int *next_y, t_vars *vars)
 		*next_x += vars->state.tile_size;
 	else if (key == KEY_ESC)
 		close_window(vars);
+	else
+				;
 }
 
 int	check_collectible(int next_x, int next_y, char tile, t_vars *vars)
