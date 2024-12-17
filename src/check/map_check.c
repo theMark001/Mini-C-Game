@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 03:45:39 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 03:52:10 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	map_check_conditions(t_vars *vars)
 
 int	map_check(t_vars *vars)
 {
-	int	fd;
 	int	fd;
 
 	if (!count_map_chars(vars))
