@@ -56,14 +56,14 @@ clean:
 	rm -rf $(OBJDIR)
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(FTPRINTF_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
-	$(MAKE) -C $(MLX_DIR_MACOS) clean
+	-$(MAKE) -C $(MLX_DIR_LINUX) clean
+	-$(MAKE) -C $(MLX_DIR_MACOS) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	$(MAKE) -C $(LIBFT_DIR) fclean
 	$(MAKE) -C $(FTPRINTF_DIR) fclean
-	$(MAKE) -C $(MLX_DIR_LINUX) clean
-	$(MAKE) -C $(MLX_DIR_MACOS) clean
+	-$(MAKE) -C $(MLX_DIR_LINUX) clean
+	-$(MAKE) -C $(MLX_DIR_MACOS) clean
 
 re: fclean all
