@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 03:13:31 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 03:24:17 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,25 +151,27 @@ int	count_map_chars(t_vars *vars)
 	return (1);
 }
 
+#include "libft.h"  // For ft_strlen and ft_strrchr
+
 int has_valid_extension(const char *path)
 {
   const char *extension = ".ber";
   size_t path_len = ft_strlen(path);
   size_t ext_len = ft_strlen(extension);
-  const char *last_dot;
+  char *last_ber;
 
   if (path_len < ext_len)
     return 0;
 
-  // Find the last occurrence of a dot in the path
-  last_dot = ft_strrchr(path, '.');
+  // Find the last occurrence of ".ber"
+  last_ber = ft_strnstr(path, extension, path_len);
 
-  // If there's no dot or the last dot doesn't match ".ber", return 0
-  if (!last_dot || ft_strncmp(last_dot, extension, ext_len) != 0)
+  // If no ".ber" is found, return 0
+  if (!last_ber)
     return 0;
 
-  // Ensure the last ".ber" is the only extension
-  if (ft_strlen(last_dot) == ext_len)
+  // Check if the last occurrence of ".ber" is exactly at the end of the string
+  if (ft_strlen(last_ber) == ext_len)
     return 1;
 
   return 0;
