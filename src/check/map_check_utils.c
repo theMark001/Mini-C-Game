@@ -63,7 +63,6 @@ int	count_map_chars(t_vars *vars)
 		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
 	close(fd);
-
 	if (width > 0 && is_first_line == 1)
 		height = 1;
 	else if (width > 0 && !is_first_line)
@@ -87,12 +86,9 @@ int	has_valid_extension(const char *path)
 	ext_len = ft_strlen(extension);
 	if (path_len < ext_len)
 		return (0);
-
 	last_ber = ft_strnstr(path, extension, path_len);
-
 	if (!last_ber)
 		return (0);
-
 	if (ft_strlen(last_ber) == ext_len)
 		return (1);
 	return (0);
