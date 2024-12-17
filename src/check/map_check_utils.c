@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 06:00:25 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 06:04:02 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ int	count_map_chars(t_vars *vars)
 		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
 	close(fd);
-	// If the file doesn't end with a newline, we might need to count
-	// the last line if it contains characters.
+
 	if (width > 0 && is_first_line == 1)
 		height = 1;
 	else if (width > 0 && !is_first_line)
@@ -88,12 +87,12 @@ int	has_valid_extension(const char *path)
 	ext_len = ft_strlen(extension);
 	if (path_len < ext_len)
 		return (0);
-	// Find the last occurrence of ".ber"
+
 	last_ber = ft_strnstr(path, extension, path_len);
-	// If no ".ber" is found, return 0
+
 	if (!last_ber)
 		return (0);
-	// Check if the last occurrence of ".ber" is exactly at the end of the string
+
 	if (ft_strlen(last_ber) == ext_len)
 		return (1);
 	return (0);

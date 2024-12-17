@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 06:01:06 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 06:04:15 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,13 @@ int	map_check_conditions(t_vars *vars)
 
 int	map_check(t_vars *vars)
 {
-	// First, count the characters in the map
+
 	if (!count_map_chars(vars))
 		return (1);
 
-	// Now we can safely check conditions as vars->map_info is populated
 	if (map_check_conditions(vars))
 		return (1);
 
-	// Check if map is rectangular
 	{
 		int fd = open_map_file(vars->path);
 		if (!is_rectangular(fd))
@@ -96,7 +94,6 @@ int	map_check(t_vars *vars)
 		}
 	}
 
-	// Check if map is enclosed in walls
 	{
 		int fd = open_map_file(vars->path);
 		if (!is_enclosed_in_walls(fd))
