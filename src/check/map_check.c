@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 01:39:28 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:44:30 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,19 @@ int	map_check_conditions(t_vars *vars)
 {
 	if (vars->map_info.all_players != 1)
 	{
-		ft_printf("%d", vars->map_info.all_players);
+		ft_printf("%d-all_players\n", vars->map_info.all_players); // Remove it later
 		ft_printf("Error: map should contain exactly one player.\n");
 		return (1);
 	}
 	if (vars->map_info.all_exits != 1)
 	{
+		ft_printf("%d-all_exits\n", vars->map_info.all_exits); // Remove it later
 		ft_printf("Error: map should contain exactly one exit.\n");
 		return (1);
 	}
 	if (vars->map_info.all_collectible < 1)
 	{
+		ft_printf("%d-all_collectible\n", vars->map_info.all_collectible); // Remove it later
 		ft_printf("Error: map should contain at least one collectible.\n");
 		return (1);
 	}
@@ -87,11 +89,13 @@ int	map_check(t_vars *vars)
 		return (1);
 	if (!is_rectangular(fd))
 	{
+		ft_printf("%d-is_rectangular\n", is_rectangular); // is_rectangular
 		ft_printf("Error: map is not rectangular.\n");
 		return (1);
 	}
 	if (!is_enclosed_in_walls(fd))
 	{
+		ft_printf("%d-is_enclosed_in_walls\n", is_enclosed_in_walls); // is_enclosed_in_walls
 		ft_printf("Error: map is not enclosed in walls.\n");
 		return (1);
 	}
