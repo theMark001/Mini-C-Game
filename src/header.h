@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 01:16:09 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:18:10 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int					close_window(t_vars *vars);
 int					ft_printf(const char *format, ...);
 
 // Check
-int					map_check_conditions(t_vars *vars);
 int					is_enclosed_in_walls(int fd);
 int					map_check(t_vars *vars);
 
