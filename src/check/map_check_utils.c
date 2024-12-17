@@ -6,13 +6,13 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 06:04:02 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 06:17:56 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	count_map_chars(t_vars *vars)
+void	count_map_chars(t_vars *vars)
 {
 	int		fd;
 	char	buffer[1024];
@@ -22,19 +22,11 @@ int	count_map_chars(t_vars *vars)
 	char	c;
 
 	int players, exits, collectibles;
-	int width, height;
 	players = 0;
 	exits = 0;
 	collectibles = 0;
-	width = 0;
-	height = 0;
 	is_first_line = 1;
 	fd = open_map_file(vars->path);
-	if (fd < 0)
-	{
-		ft_printf("Error: Unable to open map file for counting.\n");
-		return (0);
-	}
 	bytes_read = read(fd, buffer, sizeof(buffer));
 	while (bytes_read > 0)
 	{
@@ -44,14 +36,11 @@ int	count_map_chars(t_vars *vars)
 			c = buffer[i++];
 			if (c == '\n')
 			{
-				height++;
 				if (is_first_line)
 					is_first_line = 0;
 			}
 			else
 			{
-				if (is_first_line)
-					width++;
 				if (c == 'C')
 					collectibles++;
 				else if (c == 'E')
@@ -63,16 +52,9 @@ int	count_map_chars(t_vars *vars)
 		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
 	close(fd);
-	if (width > 0 && is_first_line == 1)
-		height = 1;
-	else if (width > 0 && !is_first_line)
-		height++;
-	vars->map_info.width = width;
-	vars->map_info.height = height;
 	vars->map_info.all_players = players;
 	vars->map_info.all_exits = exits;
 	vars->map_info.all_collectible = collectibles;
-	return (1);
 }
 
 int	has_valid_extension(const char *path)
