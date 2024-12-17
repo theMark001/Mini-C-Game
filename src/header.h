@@ -99,7 +99,6 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 int					is_enclosed_in_walls(int fd);
 int					map_check(t_vars *vars);
 int					has_valid_extension(const char *path);
-void	count_map_chars(t_vars *vars);
-
+void				count_map_chars(t_vars *vars);
 
 #endif
