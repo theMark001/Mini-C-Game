@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:04:22 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:32:19 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,13 @@ void	set_img(t_vars *vars)
 			"textures/wall.xpm", &img_width, &img_height);
 }
 
-static void	check_args_and_init_vars(int ac, char **av, t_vars *vars)
+static int	check_args_and_init_vars(int ac, char **av, t_vars *vars)
 {
-	if (ac != 2)
-	{
-		perror("Usage: ./so_long <map_file>\n");
-		exit(EXIT_FAILURE);
-	}
 	vars->path = av[1];
 	vars->state.collectible_count = 0;
 	vars->state.move_count = 0;
 	vars->state.initial_position_set = 0;
+	return 0;
 }
 
 static void	init_mlx_and_window(t_vars *vars)
@@ -78,9 +74,16 @@ static void	setup_and_run_game(t_vars *vars)
 int	main(int ac, char **av)
 {
 	t_vars	vars;
-
+	
+	if (ac != 2)
+	{
+		ft_printf("Usage: ./so_long <map_file>\n");
+		return 0;
+	}
 	check_args_and_init_vars(ac, av, &vars);
-	map_check(&vars);
+	if (map_check(&vars) == 1) {
+		return 0;
+	}
 	init_mlx_and_window(&vars);
 	setup_and_run_game(&vars);
 	return (0);
