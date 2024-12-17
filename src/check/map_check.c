@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 06:04:15 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 06:09:24 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,27 @@ int	map_check_conditions(t_vars *vars)
 
 int	map_check(t_vars *vars)
 {
+	int	fd;
 
 	if (!count_map_chars(vars))
 		return (1);
-
 	if (map_check_conditions(vars))
 		return (1);
-
 	{
-		int fd = open_map_file(vars->path);
+		fd = open_map_file(vars->path);
 		if (!is_rectangular(fd))
 		{
 			ft_printf("Error: map is not rectangular.\n");
 			return (1);
 		}
 	}
-
 	{
-		int fd = open_map_file(vars->path);
+		fd = open_map_file(vars->path);
 		if (!is_enclosed_in_walls(fd))
 		{
 			ft_printf("Error: map is not enclosed in walls.\n");
 			return (1);
 		}
 	}
-
 	return (0);
 }
