@@ -24,8 +24,8 @@ void	update_position(int key, int *next_x, int *next_y, t_vars *vars)
 		*next_x += vars->state.tile_size;
 	else if (key == KEY_ESC)
 		close_window(vars);
-	else {
-		
+	else
+	{
 	}
 }
 

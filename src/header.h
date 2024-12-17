@@ -89,13 +89,13 @@ int					close_window(t_vars *vars);
 
 // Utils
 int					ft_printf(const char *format, ...);
-size_t  ft_strlen(const char *s);
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
-char    *ft_strrchr(const char *s, int c);
+size_t				ft_strlen(const char *s);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_strrchr(const char *s, int c);
 
 // Check
 int					is_enclosed_in_walls(int fd);
 int					map_check(t_vars *vars);
-int has_valid_extension(const char *path);
+int					has_valid_extension(const char *path);
 
 #endif

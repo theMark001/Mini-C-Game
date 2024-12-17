@@ -89,30 +89,29 @@ int	count_map_chars(t_vars *vars)
 	ssize_t	bytes_read;
 	ssize_t	i;
 	int		is_first_line;
-	int		players, exits, collectibles;
-	int		width, height;
+	char	c;
 
+	int players, exits, collectibles;
+	int width, height;
 	players = 0;
 	exits = 0;
 	collectibles = 0;
 	width = 0;
 	height = 0;
 	is_first_line = 1;
-
 	fd = open_map_file(vars->path);
 	if (fd < 0)
 	{
 		ft_printf("Error: Unable to open map file for counting.\n");
 		return (0);
 	}
-
 	bytes_read = read(fd, buffer, sizeof(buffer));
 	while (bytes_read > 0)
 	{
 		i = 0;
 		while (i < bytes_read)
 		{
-			char c = buffer[i++];
+			c = buffer[i++];
 			if (c == '\n')
 			{
 				height++;
@@ -134,47 +133,42 @@ int	count_map_chars(t_vars *vars)
 		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
 	close(fd);
-
 	// If the file doesn't end with a newline, we might need to count
 	// the last line if it contains characters.
 	if (width > 0 && is_first_line == 1)
 		height = 1;
 	else if (width > 0 && !is_first_line)
 		height++;
-
 	vars->map_info.width = width;
 	vars->map_info.height = height;
 	vars->map_info.all_players = players;
 	vars->map_info.all_exits = exits;
 	vars->map_info.all_collectible = collectibles;
-
 	return (1);
 }
 
-#include "libft.h"  // For ft_strlen and ft_strrchr
+#include "libft.h" // For ft_strlen and ft_strrchr
 
-int has_valid_extension(const char *path)
+int	has_valid_extension(const char *path)
 {
-  const char *extension = ".ber";
-  size_t path_len = ft_strlen(path);
-  size_t ext_len = ft_strlen(extension);
-  char *last_ber;
+	const char	*extension = ".ber";
+	size_t		path_len;
+	size_t		ext_len;
+	char		*last_ber;
 
-  if (path_len < ext_len)
-    return 0;
-
-  // Find the last occurrence of ".ber"
-  last_ber = ft_strnstr(path, extension, path_len);
-
-  // If no ".ber" is found, return 0
-  if (!last_ber)
-    return 0;
-
-  // Check if the last occurrence of ".ber" is exactly at the end of the string
-  if (ft_strlen(last_ber) == ext_len)
-    return 1;
-
-  return 0;
+	path_len = ft_strlen(path);
+	ext_len = ft_strlen(extension);
+	if (path_len < ext_len)
+		return (0);
+	// Find the last occurrence of ".ber"
+	last_ber = ft_strnstr(path, extension, path_len);
+	// If no ".ber" is found, return 0
+	if (!last_ber)
+		return (0);
+	// Check if the last occurrence of ".ber" is exactly at the end of the string
+	if (ft_strlen(last_ber) == ext_len)
+		return (1);
+	return (0);
 }
 
 int	map_check(t_vars *vars)
