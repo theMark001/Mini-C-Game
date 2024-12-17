@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
 OBJDIR = obj
-MLX_DIR = libs/mlx-macos # libs/mlx-macos libs/mlx
+MLX_DIR = libs/mlx  # libs/mlx-macos libs/mlx
 LIBFT_DIR = libs/libft
 FTPRINTF_DIR = libs/libftprintf
 
@@ -19,12 +19,12 @@ OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 all: $(LIBFT_DIR)/libft.a $(FTPRINTF_DIR)/libftprintf.a $(MLX_DIR)/libmlx_Linux.a $(NAME)
 
 # Linux  Name compile
-# $(NAME): $(OBJS)
-# 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx_Linux -lm -lX11 -lXext -o $(NAME)
-
-# Mac os Name compile
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx_Linux -lm -lX11 -lXext -o $(NAME)
+
+# # Mac os Name compile
+# $(NAME): $(OBJS)
+# 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(FTPRINTF_DIR) -L$(MLX_DIR) -lftprintf -lft -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 # Build the object files with dynamic directory creation
 $(OBJDIR)/%.o: %.c
