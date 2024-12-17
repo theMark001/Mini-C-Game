@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 01:38:39 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:39:28 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	map_check_conditions(t_vars *vars)
 {
 	if (vars->map_info.all_players != 1)
 	{
+		ft_printf("%d", vars->map_info.all_players);
 		ft_printf("Error: map should contain exactly one player.\n");
-		printf("%d", vars->map_info.all_players);
 		return (1);
 	}
 	if (vars->map_info.all_exits != 1)
