@@ -77,6 +77,13 @@ typedef struct useless_4
 	char			*path;
 }					t_vars;
 
+typedef struct useless_5
+{
+	int				players;
+	int				exits;
+	int				collectibles;
+}					t_counts;
+
 // Map
 void				get_map_info(t_vars *vars);
 void				read_and_display_map(t_vars *vars);
