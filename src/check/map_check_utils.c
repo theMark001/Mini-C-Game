@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 19:01:21 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 19:09:55 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	update_counts(char c, t_counts *counts)
 		counts->exits++;
 	else if (c == 'P')
 		counts->players++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1' && c != '\n')
 	{
 		ft_printf("Error: Invalid character '%c' found in the map.\n", c);
 		exit(EXIT_FAILURE);
