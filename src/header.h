@@ -92,10 +92,12 @@ int					ft_printf(const char *format, ...);
 size_t				ft_strlen(const char *s);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strrchr(const char *s, int c);
+char    *ft_strnstr(const char *haystack, const char *needle, size_t n);
 
 // Check
 int					is_enclosed_in_walls(int fd);
 int					map_check(t_vars *vars);
 int					has_valid_extension(const char *path);
+int	count_map_chars(t_vars *vars);
 
 #endif
