@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:32:19 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 02:34:10 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	set_img(t_vars *vars)
 			"textures/wall.xpm", &img_width, &img_height);
 }
 
-static int	check_args_and_init_vars(int ac, char **av, t_vars *vars)
+static int	check_args_and_init_vars(char **av, t_vars *vars)
 {
 	vars->path = av[1];
 	vars->state.collectible_count = 0;
@@ -80,7 +80,7 @@ int	main(int ac, char **av)
 		ft_printf("Usage: ./so_long <map_file>\n");
 		return 0;
 	}
-	check_args_and_init_vars(ac, av, &vars);
+	check_args_and_init_vars(av, &vars);
 	if (map_check(&vars) == 1) {
 		return 0;
 	}
