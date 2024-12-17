@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 21:30:23 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 06:17:56 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 06:24:07 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	count_map_chars(t_vars *vars)
 	char	buffer[1024];
 	ssize_t	bytes_read;
 	ssize_t	i;
-	int		is_first_line;
 	char	c;
+	int		players;
+	int		exits;
+	int		collectibles;
 
-	int players, exits, collectibles;
 	players = 0;
 	exits = 0;
 	collectibles = 0;
-	is_first_line = 1;
 	fd = open_map_file(vars->path);
 	bytes_read = read(fd, buffer, sizeof(buffer));
 	while (bytes_read > 0)
@@ -34,20 +34,12 @@ void	count_map_chars(t_vars *vars)
 		while (i < bytes_read)
 		{
 			c = buffer[i++];
-			if (c == '\n')
-			{
-				if (is_first_line)
-					is_first_line = 0;
-			}
-			else
-			{
-				if (c == 'C')
-					collectibles++;
-				else if (c == 'E')
-					exits++;
-				else if (c == 'P')
-					players++;
-			}
+			if (c == 'C')
+				collectibles++;
+			else if (c == 'E')
+				exits++;
+			else if (c == 'P')
+				players++;
 		}
 		bytes_read = read(fd, buffer, sizeof(buffer));
 	}
