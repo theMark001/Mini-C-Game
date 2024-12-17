@@ -3,4 +3,4 @@
 2) For linux
 	- make
 3) For macos
-	make macos
+	- make macos
