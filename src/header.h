@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 23:21:05 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/17 02:54:01 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 03:15:03 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int					close_window(t_vars *vars);
 int					ft_printf(const char *format, ...);
 size_t  ft_strlen(const char *s);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
+char    *ft_strrchr(const char *s, int c);
 
 // Check
 int					is_enclosed_in_walls(int fd);
