@@ -6,7 +6,7 @@
 /*   By: marksylaiev <marksylaiev@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:36:46 by marksylaiev       #+#    #+#             */
-/*   Updated: 2024/12/16 04:47:55 by marksylaiev      ###   ########.fr       */
+/*   Updated: 2024/12/17 01:16:50 by marksylaiev      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	main(int ac, char **av)
 	t_vars	vars;
 
 	check_args_and_init_vars(ac, av, &vars);
+	map_check_conditions(&vars);
+	map_check(&vars);
 	init_mlx_and_window(&vars);
 	setup_and_run_game(&vars);
 	return (0);
