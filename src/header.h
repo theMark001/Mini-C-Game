@@ -13,6 +13,8 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+# include "../libs/libft/libft.h"           // libft
+# include "../libs/libftprintf/ft_printf.h" // printf
 # include "mlx.h"    // For mlx funcs
 # include <fcntl.h>  // For open() and O_RDONLY
 # include <stdio.h>  // For perror()
@@ -93,14 +95,6 @@ int					move_player(int key, t_vars *vars);
 char				next_px(int next_x, int next_y, t_vars *vars);
 int					open_map_file(const char *path);
 int					close_window(t_vars *vars);
-
-// Utils
-int					ft_printf(const char *format, ...);
-size_t				ft_strlen(const char *s);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strrchr(const char *s, int c);
-char				*ft_strnstr(const char *haystack, const char *needle,
-						size_t n);
 
 // Check
 int					is_enclosed_in_walls(int fd);
